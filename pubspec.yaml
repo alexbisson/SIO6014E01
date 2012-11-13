@@ -1,0 +1,5 @@
+name:  SIO6014E01
+description:  A sample application
+
+#dependencies:
+#  unittest: { sdk: unittest }
