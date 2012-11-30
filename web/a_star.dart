@@ -11,6 +11,9 @@ class AStar {
     // The map of navigated nodes
     Map<City, City> cameFrom = new Map<City, City>();
 
+    Map<City, double> gScore = new Map<City, double>();
+    Map<City, double> fScore = new Map<City, double>();
+
     openSet.add(origin);
 
 
