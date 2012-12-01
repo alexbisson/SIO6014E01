@@ -27,15 +27,21 @@ void testAStar(Event event) {
 
   List<City> cities = getCitiesList();
 
-  var c1 = cities[0];
-  var c2 = cities[2];
+  generateRandomConnections(cities);
 
-  double dist = c1.getDistanceTo(c2);
+  // Print connections
+  StringBuffer buffer = new StringBuffer();
+
+  for(var city in cities) {
+    for (var connection in city.connections) {
+      buffer.addAll([city.name, ' - ', connection.name, ' || ']);
+    }
+  }
+
+  //query("#text").text = buffer.toString();
 
   var algo = new AStar();
-  algo.findPath(cities[0], cities[1]);
-
-
+  List<City> path = algo.findPath(cities[0], cities[2]);
 }
 
 List<City> getCitiesList() {
@@ -142,4 +148,32 @@ List<City> getCitiesList() {
   cities.add(new City('Nagpur', 21.16, 79.08));
 
   return cities;
+}
+
+void generateRandomConnections(List<City> cities) {
+
+  // Nombre de connexions sortantes qu'on va creer par ville
+  // Il va avoir plus de connexions en bout de lignes puisque chaque
+  // connexion est créée dans 2 villes
+  int minConnections = 2;
+  int maxConnections = 6;
+
+  Random rnd = new Random();
+
+  for (City city in cities) {
+    // Nombre de connexions pour la ville (valeur max en parametre est exclue)
+    int connectionCount = rnd.nextInt(maxConnections - minConnections + 1) + minConnections;
+
+    while (connectionCount > 0) {
+      // Piger une ville aléatoire comme destination
+      City destination = cities[rnd.nextInt(cities.length)];
+
+      if (!destination.connections.contains(city)) {
+        city.connections.add(destination);
+        destination.connections.add(city);
+        connectionCount = connectionCount - 1;
+      }
+    }
+
+  }
 }
