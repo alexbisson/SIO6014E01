@@ -3,24 +3,14 @@ library sio6014e01;
 import 'dart:html';
 import 'dart:math';
 part 'city.dart';
+part 'ConvertisseurCoordonnees.dart';
 part 'a_star.dart';
 
 void main() {
-//  query("#text")
-//    ..text = "Click me!"
-//    ..on.click.add(reverseText);
-
   query('#btnTestAStar').on.click.add(testAStar);
 }
 
-void reverseText(Event event) {
-  var text = query("#text").text;
-  var buffer = new StringBuffer();
-  for (int i = text.length - 1; i >= 0; i--) {
-    buffer.add(text[i]);
-  }
-  query("#text").text = buffer.toString();
-}
+
 
 void testAStar(Event event) {
   //window.alert('test');
@@ -29,6 +19,8 @@ void testAStar(Event event) {
 
   generateRandomConnections(cities);
 
+  afficherVilles(cities);
+  
   // Print connections
   StringBuffer buffer = new StringBuffer();
 
@@ -43,6 +35,24 @@ void testAStar(Event event) {
   var algo = new AStar();
   List<City> path = algo.findPath(cities[0], cities[2]);
 }
+
+void afficherVilles(List<City> cities){
+  ConvertisseurCoordonnees convertisseur = new ConvertisseurCoordonnees();
+  int x, y;
+  for (City city in cities) {
+    x = convertisseur.obtenirCoordonneeHorizontale(city.longitude);
+    y = convertisseur.obtenirCoordonneeVerticale(city.latitude);
+    afficherVille(x, y);
+  }
+  
+  }
+
+void afficherVille(int x, int y){
+  
+  }
+
+
+
 
 List<City> getCitiesList() {
   List<City> cities = new List<City>();

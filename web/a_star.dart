@@ -6,7 +6,7 @@ class AStar {
     // The set of nodes already evaluated
     List<City> closedSet = new List<City>();
 
-    // The set of nodes already evaluated
+    // The set of tentative nodes to be evaluated, initially containing the start node
     List<City> openSet = new List<City>();
 
     // The map of navigated nodes
