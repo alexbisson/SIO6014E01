@@ -175,7 +175,7 @@ void generateRandomConnections(List<City> cities) {
     int connectionCount = rnd.nextInt(maxConnections - minConnections + 1) + minConnections;
 
     while (connectionCount > 0) {
-      // Piger une ville aléatoire comme destination
+   // Piger une ville aléatoire comme destination
       City destination = cities[rnd.nextInt(cities.length)];
 
       if (!destination.connections.contains(city)) {
