@@ -9,18 +9,18 @@ class AStar {
     // The set of tentative nodes to be evaluated, initially containing the start node
     List<City> openSet = new List<City>();
 
-    // The map of navigated nodes
-    Map<City, City> cameFrom = new Map<City, City>();
+    // The map of navigated nodes 
+    Map<City, City> cameFrom = new Map();
 
-    Map<City, double> gScore = new Map<City, double>(); // Cost from start along best known path
-    Map<City, double> fScore = new Map<City, double>(); // Estimated total cost from start to goal through y
+    Map<City, double> gScore = new Map(); // Cost from start along best known path
+    Map<City, double> fScore = new Map(); // Estimated total cost from start to goal through y
 
     openSet.add(origin);
 
     gScore[origin] = 0.0;
     fScore[origin] = gScore[origin] + origin.getDistanceTo(goal);
 
-    while (!openSet.isEmpty) {
+    while (!openSet.isEmpty()) {
 
       // Trier par fScore ascendant
       openSet.sort((a, b) {
@@ -36,7 +36,7 @@ class AStar {
         return reconstructPath(cameFrom, goal);
       }
 
-      openSet.removeAt(0);
+      openSet=null;
       closedSet.add(current);
 
       for(City neighbor in current.connections) {
