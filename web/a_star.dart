@@ -3,6 +3,7 @@ part of sio6014e01;
 class AStar {
   List<City> findPath(City origin, City goal) {
 
+    
     // The set of nodes already evaluated
     List<City> closedSet = new List<City>();
 
@@ -20,8 +21,9 @@ class AStar {
     gScore[origin] = 0.0;
     fScore[origin] = gScore[origin] + origin.getDistanceTo(goal);
 
-    while (!openSet.isEmpty()) {
-
+    
+    while (!openSet.isEmpty) {
+      
       // Trier par fScore ascendant
       openSet.sort((a, b) {
         if (fScore[a] < fScore[b]) return -1;
@@ -36,14 +38,14 @@ class AStar {
         return reconstructPath(cameFrom, goal);
       }
 
-      openSet=null;
+      openSet.removeAt(0);
       closedSet.add(current);
 
       for(City neighbor in current.connections) {
         if (closedSet.contains(neighbor)) {
           continue;
         }
-
+        
         double tentativeGScore = gScore[current] + current.getDistanceTo(neighbor);
 
         if (!openSet.contains(neighbor) || tentativeGScore <= gScore[neighbor]) {
