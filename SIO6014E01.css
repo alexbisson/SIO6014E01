@@ -12,11 +12,31 @@ p {
   color: #333;
 }
 
+#popup-box {
+	width: 700px;
+	height: 30px;
+
+
+	border-radius: 10px;
+ 
+	position: relative;
+ 
+	-webkit-box-shadow: 0 5px 5px #333;
+ 
+	display: -webkit-box;
+	-webkit-box-pack: right;
+	-webkit-box-align: right;
+ 
+	-webkit-transition: all .5s ease-in;
+}
+
+
+
 #container {
   width: 100%;
   height: 400px;
   position: relative;
-  border: 1px solid #ccc;
+  border: 4px solid #ccc;
   background-color: #fff;
 }
 
