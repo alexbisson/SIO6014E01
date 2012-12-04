@@ -3,7 +3,7 @@ library sio6014e01;
 import 'dart:html';
 import 'dart:math';
 part 'city.dart';
-part 'ConvertisseurCoordonnees.dart';
+part 'convertisseur_coordonnees.dart';
 part 'dessinateur.dart';
 part 'a_star.dart';
 

@@ -3,9 +3,11 @@ part of sio6014e01;
 class Dessinateur {
   
   void dessinerVilles(List<City> cities){
-    ConvertisseurCoordonnees convertisseur = new ConvertisseurCoordonnees();
-    int x, y;
     CanvasElement canvas = document.query('#carteCanevas');
+    int largeurCanevas = canvas.width;
+    int hauteurCanevas = canvas.height;
+    ConvertisseurCoordonnees convertisseur = new ConvertisseurCoordonnees(largeurCanevas,hauteurCanevas);
+    int x, y;
     CanvasRenderingContext2D context = canvas.getContext('2d');
     for (City city in cities) {
       x = convertisseur.obtenirCoordonneeHorizontale(city.longitude);
