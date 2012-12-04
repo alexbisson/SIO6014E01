@@ -30,7 +30,11 @@ p {
 	-webkit-transition: all .5s ease-in;
 }
 
-
+#carteCanevas {
+    background:url(web/world_map.jpg);
+    width: 1024px; 
+    height:512px;
+  }
 
 #container {
   width: 100%;

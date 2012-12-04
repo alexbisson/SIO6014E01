@@ -13,6 +13,7 @@ class City {
 
   double latitude;
   double longitude;
+  
 
   double getDistanceTo(City other) {
     // Formule Excel qui calcule la distance

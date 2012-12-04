@@ -4,10 +4,14 @@ import 'dart:html';
 import 'dart:math';
 part 'city.dart';
 part 'ConvertisseurCoordonnees.dart';
+part 'dessinateur.dart';
 part 'a_star.dart';
 
 void main() {
   query('#btnTestAStar').on.click.add(testAStar);
+  List<City> cities = getCitiesList();
+  afficherVilles(cities);
+  
 }
 
 
@@ -19,8 +23,6 @@ void testAStar(Event event) {
 
   generateRandomConnections(cities);
 
-  afficherVilles(cities);
-  
   // Print connections
   StringBuffer buffer = new StringBuffer();
 
@@ -30,26 +32,16 @@ void testAStar(Event event) {
     }
   }
 
-  //query("#text").text = buffer.toString();
-
   var algo = new AStar();
   List<City> path = algo.findPath(cities[0], cities[2]);
 }
 
 void afficherVilles(List<City> cities){
-  ConvertisseurCoordonnees convertisseur = new ConvertisseurCoordonnees();
-  int x, y;
-  for (City city in cities) {
-    x = convertisseur.obtenirCoordonneeHorizontale(city.longitude);
-    y = convertisseur.obtenirCoordonneeVerticale(city.latitude);
-    afficherVille(x, y);
-  }
-  
-  }
+  Dessinateur dessinateur = new Dessinateur();
+  dessinateur.dessinerVilles(cities);
+}
 
-void afficherVille(int x, int y){
-  
-  }
+
 
 
 
