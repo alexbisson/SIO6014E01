@@ -32,8 +32,6 @@ p {
 
 #carteCanevas {
     background:url(web/world_map.jpg);
-    width: 1024px; 
-    height:512px;
   }
 
 #container {

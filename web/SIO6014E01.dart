@@ -11,6 +11,8 @@ void main() {
   query('#btnTestAStar').on.click.add(testAStar);
   List<City> cities = getCitiesList();
   afficherVilles(cities);
+  generateRandomConnections(cities);
+  afficherVols(cities);
   
 }
 
@@ -39,6 +41,11 @@ void testAStar(Event event) {
 void afficherVilles(List<City> cities){
   Dessinateur dessinateur = new Dessinateur();
   dessinateur.dessinerVilles(cities);
+}
+
+void afficherVols(List<City> cities){
+  Dessinateur dessinateur = new Dessinateur();
+  dessinateur.dessinerVols(cities);
 }
 
 
