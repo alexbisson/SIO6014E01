@@ -14,16 +14,27 @@
  
 		 <div id="popup-box">
  
- 
-              Selectionnez une ville de depart et une ville d arrivee pour trouver le trajet le plus rapide
- 
+ <h1>A* : le trajet le plus rapide</h1>
+    <ol>
+      <li>Selectionnez une ville de d&eacute;part</li>
+      <li>Selectionnez une ville d&apos;arriv&eacute;e</li>
+      <li>Appuyez sur le bouton <em>Test A*</em></li>
+    </ol>
+
+<p>
+Le r&eacute;sultat sera affich&eacute; sur la carte en vert et dans la section 
+r&eacute;ponse sous les liste d&eacute;roulantes. S&apos;il y a erreur lors du traitement, 
+un message appara&icirc;tra dans la bo&icirc;te de r&eacute;ponse. 
+
+
+</p>
+<em>note:ici le trajet le plus rapide fait r&eacute;f&eacute;rence au nombre d'a&eacute;roports visit&eacute;s</em>
  
  		   </div>
  
  
 	   </section>
 	   
-	  <img src="airport.gif" id="aeroport"/>   
     <div id="carte">
       <canvas height="512" width="1024" id="carteCanevas">
         Canvas is not supported in your browser.
@@ -31,106 +42,14 @@
     </div>
     
     
-
+<div id="boutons">
     <button id="btnTestAStar">Test A*</button>
     
     <label for="Ville de depart">Ville de depart</label>
-            <select id="Depart">
-
-          <option>Abidjan</option>
-          <option>Addis Abeba</option>
-          <option>Bagdad</option>
-          <option>Bangkok</option>
-          <option>Berlin</option>
-          <option>Bombay</option>
-          <option>Brasilia</option>
-          <option>Buenos Aires</option>
-          <option>Cairo</option>
-          <option>Cape Town</option>
-          <option>Casablanca</option>
-          <option>Chicago</option>
-          <option>Dakar</option>
-          <option>Durban</option>
-          <option>Fortaleza</option>
-          <option>Harbin</option>
-          <option>Istanbul</option>
-          <option>Jakarta</option>
-          <option>Jiddah</option>
-          <option>Kiev</option>
-          <option>Lima</option>
-          <option>London</option>
-          <option>Los Angeles</option>
-          <option>Luanda</option>
-          <option>Madras</option>
-          <option>Madrid</option>
-          <option>Maracaibo</option>
-          <option>Mashhad</option>
-          <option>Melbourne</option>
-          <option>Mexico City</option>
-          <option>Montreal</option>
-          <option>Moscow</option>
-          <option>Nagpur</option>
-          <option>Nairobi</option>
-          <option>New York</option>
-          <option>Osaka</option>
-          <option>Peking</option>
-          <option>Rio de Janeiro</option>
-          <option>Riyadh</option>
-          <option>Rome</option>
-          <option>Saint Petersburg</option>
-          <option>Shanghai</option>
-          <option>Singapore</option>
-          <option>Sydney</option>
-       
-        </select>
-        <label for="Ville d'arrivee">Ville d'arrivee</label>
-                 <select id="arrivee">
-                   
-      <option>Abidjan</option>
-          <option>Addis Abeba</option>
-          <option>Bagdad</option>
-          <option>Bangkok</option>
-          <option>Berlin</option>
-          <option>Bombay</option>
-          <option>Brasilia</option>
-          <option>Buenos Aires</option>
-          <option>Cairo</option>
-          <option>Cape Town</option>
-          <option>Casablanca</option>
-          <option>Chicago</option>
-          <option>Dakar</option>
-          <option>Durban</option>
-          <option>Fortaleza</option>
-          <option>Harbin</option>
-          <option>Istanbul</option>
-          <option>Jakarta</option>
-          <option>Jiddah</option>
-          <option>Kiev</option>
-          <option>Lima</option>
-          <option>London</option>
-          <option>Los Angeles</option>
-          <option>Luanda</option>
-          <option>Madras</option>
-          <option>Madrid</option>
-          <option>Maracaibo</option>
-          <option>Mashhad</option>
-          <option>Melbourne</option>
-          <option>Mexico City</option>
-          <option>Montreal</option>
-          <option>Moscow</option>
-          <option>Nagpur</option>
-          <option>Nairobi</option>
-          <option>New York</option>
-          <option>Osaka</option>
-          <option>Peking</option>
-          <option>Rio de Janeiro</option>
-          <option>Riyadh</option>
-          <option>Rome</option>
-          <option>Saint Petersburg</option>
-          <option>Shanghai</option>
-          <option>Singapore</option>
-          <option>Sydney</option>
-   
+    <select id="depart"></select>
+    <label for="Ville d'arrivee">Ville d'arrivee</label>
+    <select id="arrivee"></select>
+</div>
 
     <div id="container">
 +      <p id="text"></p>

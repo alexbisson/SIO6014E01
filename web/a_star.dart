@@ -2,7 +2,8 @@ part of sio6014e01;
 
 class AStar {
   List<City> findPath(City origin, City goal) {
-
+    assert(origin != null);
+    assert(goal != null);
     
     // The set of nodes already evaluated
     List<City> closedSet = new List<City>();
@@ -35,7 +36,7 @@ class AStar {
       City current = openSet[0];
 
       if (current == goal) {
-        return reconstructPath(cameFrom, goal);
+        return _reconstructPath(cameFrom, goal);
       }
 
       openSet.removeAt(0);
@@ -63,10 +64,12 @@ class AStar {
     return null;
   }
 
-  List<City> reconstructPath(Map<City, City> cameFrom, City currentNode) {
-
+  List<City> _reconstructPath(Map<City, City> cameFrom, City currentNode) {
+    assert(cameFrom != null);
+    assert(currentNode != null);
+    
     if (cameFrom.containsKey(currentNode)) {
-      List<City> path = reconstructPath(cameFrom, cameFrom[currentNode]);
+      List<City> path = _reconstructPath(cameFrom, cameFrom[currentNode]);
       path.add(currentNode);
       return path;
     } else {
