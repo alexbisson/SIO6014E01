@@ -1,10 +1,16 @@
 part of sio6014e01;
 
-class ReferentielVilles {
+class CitiesReferential {
   List<City> cities;
   
-  ReferentielVilles(){
-    cities = getCitiesList();
+  
+  CitiesReferential(){
+    cities = getCities();
+    sortCities();
+  }
+  
+  //Trier les villes selon le nom. Principalement pour l'affichage dans le listes déroulantes
+  void sortCities(){
     cities.sort(
         (a,b){
           String nom1 = a.name;
@@ -17,16 +23,19 @@ class ReferentielVilles {
     );
   }
   
-  City obtenirVille(String nom){
-    assert(nom != null);
+  //Permet d'obtenir une ville selon son nom
+  City getCity(String name){
+    assert(name != null);
     for(var city in cities) {
-      if(city.name == nom){
+      if(city.name == name){
         return city;
       }
     }
+    return null;
   } 
   
-  List<City> getCitiesList() {
+  //Retourne la liste de toutes les villes disponibles
+  List<City> getCities() {
     List<City> cities = new List<City>();
 
     cities.add(new City('Shanghai', 31.23, 121.47));

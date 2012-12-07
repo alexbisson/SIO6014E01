@@ -10,6 +10,7 @@ body {
 
 p {
   color: #333;
+  text-align:justify;
 }
 
 #popup-box {
@@ -20,7 +21,7 @@ p {
    width : 970px;
 }
 
-#carteCanevas {
+#canvasMap {
     background:url(web/world_map.jpg);
     margin-bottom: 20px;
   }
@@ -41,6 +42,8 @@ p {
   margin-top: 140px;
 }
 
-#boutons{
+#buttons{
   margin-bottom: 20px;
-  }
+}
+
+

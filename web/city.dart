@@ -1,8 +1,10 @@
 part of sio6014e01;
 
 class City {
-  String name;
 
+  String name;
+  double latitude;
+  double longitude;
   List<City> connections = new List<City>();
 
   City(String name, double latitude, double longitude) {
@@ -15,10 +17,7 @@ class City {
     this.longitude = longitude;
   }
 
-  double latitude;
-  double longitude;
-  
-
+  //Permet d'obtenir la distance entre deux villes
   double getDistanceTo(City other) {
     assert(other != null);
     // Formule Excel qui calcule la distance
@@ -30,6 +29,7 @@ class City {
         sin(_radians(90 - other.latitude)) * cos(_radians(this.longitude - other.longitude)));
   }
 
+  //Converti les degrés en radians
   double _radians(double degres) {
     return degres * 0.0174532925;
   }

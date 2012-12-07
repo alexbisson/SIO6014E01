@@ -1,36 +1,31 @@
 part of sio6014e01;
 
 class AStar {
+  
+  
+  //Permet de trouver le chemin le plus court entre 2 point
   List<City> findPath(City origin, City goal) {
     assert(origin != null);
     assert(goal != null);
     
-    // The set of nodes already evaluated
+    // l'ensemble des noeuds à évaluer
     List<City> closedSet = new List<City>();
 
-    // The set of tentative nodes to be evaluated, initially containing the start node
+    // L'ensemble des noeuds essayés
     List<City> openSet = new List<City>();
-
-    // The map of navigated nodes 
-    Map<City, City> cameFrom = new Map();
-
-    Map<City, double> gScore = new Map(); // Cost from start along best known path
-    Map<City, double> fScore = new Map(); // Estimated total cost from start to goal through y
+ 
+    Map<City, City> cameFrom = new Map(); // Map des noeuds parcourus
+    Map<City, double> gScore = new Map(); // Coût à partir du début du meilleur chemin connu
+    Map<City, double> fScore = new Map(); // Coût estimé de l'origine à y
 
     openSet.add(origin);
-
     gScore[origin] = 0.0;
     fScore[origin] = gScore[origin] + origin.getDistanceTo(goal);
 
     
     while (!openSet.isEmpty) {
       
-      // Trier par fScore ascendant
-      openSet.sort((a, b) {
-        if (fScore[a] < fScore[b]) return -1;
-        else if (fScore[a] == fScore[b]) return 0;
-        else return 1;
-      });
+      sortNodes(openSet, fScore);
 
       // Noeud ayant le plus petit f score
       City current = openSet[0];
@@ -63,7 +58,18 @@ class AStar {
     // Pas de chemin trouvé
     return null;
   }
+  
+  
+  // Trier par fScore ascendant  
+  void sortNodes(List<City> openSet, Map fScore){
+    openSet.sort((a, b) {
+      if (fScore[a] < fScore[b]) return -1;
+      else if (fScore[a] == fScore[b]) return 0;
+      else return 1;
+    });
+  }
 
+  //Reconstruire le chemin
   List<City> _reconstructPath(Map<City, City> cameFrom, City currentNode) {
     assert(cameFrom != null);
     assert(currentNode != null);

@@ -3,44 +3,43 @@ library sio6014e01;
 import 'dart:html';
 import 'dart:math';
 part 'city.dart';
-part 'convertisseur_coordonnees.dart';
-part 'dessinateur.dart';
+part 'coordinate_converter.dart';
+part 'drawing_manager.dart';
 part 'a_star.dart';
-part 'referentiel_villes.dart';
-part 'gestionnaire_page_html.dart';
+part 'cities_referential.dart';
+part 'html_page_manager.dart';
+part 'line.dart';
 
 
 
-ReferentielVilles referentielVilles = new ReferentielVilles();
-GestionnairePageHtml gestionnairePageHtml = new GestionnairePageHtml();
+CitiesReferential citiesReferential = new CitiesReferential();
+HtmlPageManager htmlPageManager = new HtmlPageManager();
 
 void main() {
   query('#btnTestAStar').on.click.add(testAStar);
-  gestionnairePageHtml.afficherVilles();
   generateRandomConnections();   
-  gestionnairePageHtml.afficherVols();
-  gestionnairePageHtml.remplirSelect();
+  htmlPageManager.displayCitiesAndFlights();
+  htmlPageManager.fillDropDownLists();
 }
 
 void testAStar(Event event) {
 //Vider l'espace réponse
-  gestionnairePageHtml.afficherTexteReponse(""); 
+  htmlPageManager.displayAnswerText(""); 
   AStar algo = new AStar();
-  City villeDepart = referentielVilles.obtenirVille((query('#depart') as SelectElement).selectedOptions[0].text );
-  City villeArrivee = referentielVilles.obtenirVille((query('#arrivee') as SelectElement).selectedOptions[0].text );
-  if(villeDepart.name !== villeArrivee.name){
-    List<City> path = algo.findPath(villeDepart, villeArrivee);
+  City origin = citiesReferential.getCity((query('#origin') as SelectElement).selectedOptions[0].text );
+  City destination = citiesReferential.getCity((query('#destination') as SelectElement).selectedOptions[0].text );
+  if(origin.name !== destination.name){
+    List<City> path = algo.findPath(origin, destination);
     if(path.length<2){
-      gestionnairePageHtml.afficherTexteReponse("Aucun chemin possible, trouvez un autre moyen de transport");
+      htmlPageManager.displayAnswerText("Aucun chemin possible, trouvez un autre moyen de transport");
     }else{
-      gestionnairePageHtml.afficherCheminPlusCours(path);  
+      htmlPageManager.displayShortestPath(path);  
     }
   }else{
-    gestionnairePageHtml.afficherTexteReponse("Origine = Destination, ne prenez pas l'avion");
+    htmlPageManager.displayCitiesAndFlights();//Efface le chemin précédent
+    htmlPageManager.displayAnswerText("Origine = Destination, ne prenez pas l'avion ;-)");
   }
 }
-
-
 
 
 void generateRandomConnections() {
@@ -52,13 +51,13 @@ void generateRandomConnections() {
   int maxConnections = 6;
   Random rnd = new Random();
 
-  for (City city in referentielVilles.cities) {
+  for (City city in citiesReferential.cities) {
     // Nombre de connexions pour la ville (valeur max en parametre est exclue)
     int connectionCount = rnd.nextInt(maxConnections - minConnections + 1) + minConnections;
 
     while (connectionCount > 0) {
    // Piger une ville aléatoire comme destination
-      City destination = referentielVilles.cities[rnd.nextInt(referentielVilles.cities.length)];
+      City destination = citiesReferential.cities[rnd.nextInt(citiesReferential.cities.length)];
 
       if (!destination.connections.contains(city)) {
         city.connections.add(destination);
