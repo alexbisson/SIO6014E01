@@ -67,21 +67,21 @@ class CitiesReferential {
     cities.add(new City('Harbin', 45.75, 126.65));
     cities.add(new City('Durban', -29.87, 30.99));
     cities.add(new City('Casablanca', 33.6, -7.62));
-    cities.add(new City('Addis Abeba', 9.03, 38.74));
-    cities.add(new City('Madrid', 40.42, -3.71));
-    cities.add(new City('Jiddah', 21.5, 39.17));
-    cities.add(new City('Nairobi', -1.29, 36.82));
-    cities.add(new City('Chicago', 41.84, -87.68));
-    cities.add(new City('Kiev', 50.43, 30.52));
-    cities.add(new City('Osaka', 34.68, 135.5));
-    cities.add(new City('Luanda', -8.82, 13.24));
-    cities.add(new City('Rome', 41.89, 12.5));
-    cities.add(new City('Dakar', 14.72, -17.48));
-    cities.add(new City('Fortaleza', -3.78, -38.59));
-    cities.add(new City('Mashhad', 36.27, 59.57));
-    cities.add(new City('Maracaibo', 10.73, -71.66));
-    cities.add(new City('Brasilia', -15.78, -47.91));
-    cities.add(new City('Nagpur', 21.16, 79.08));
+//    cities.add(new City('Addis Abeba', 9.03, 38.74));
+//    cities.add(new City('Madrid', 40.42, -3.71));
+//    cities.add(new City('Jiddah', 21.5, 39.17));
+//    cities.add(new City('Nairobi', -1.29, 36.82));
+//    cities.add(new City('Chicago', 41.84, -87.68));
+//    cities.add(new City('Kiev', 50.43, 30.52));
+//    cities.add(new City('Osaka', 34.68, 135.5));
+//    cities.add(new City('Luanda', -8.82, 13.24));
+//    cities.add(new City('Rome', 41.89, 12.5));
+//    cities.add(new City('Dakar', 14.72, -17.48));
+//    cities.add(new City('Fortaleza', -3.78, -38.59));
+//    cities.add(new City('Mashhad', 36.27, 59.57));
+//    cities.add(new City('Maracaibo', 10.73, -71.66));
+//    cities.add(new City('Brasilia', -15.78, -47.91));
+//    cities.add(new City('Nagpur', 21.16, 79.08));
 
     return cities;
   }

@@ -32,25 +32,20 @@ class DrawingManager {
     _context.fill();
   }
   
+  //Dessine tous les vols
   void drawFlights(){
-//    for (City city in cities) {
-//      for (City destination in city.connections){
-//        xSource = convertisseur.obtenirCoordonneeHorizontale(city.longitude);
-//        ySource = convertisseur.obtenirCoordonneeVerticale(city.latitude);  
-//        xDestination = convertisseur.obtenirCoordonneeHorizontale(destination.longitude);
-//        yDestination = convertisseur.obtenirCoordonneeVerticale(destination.latitude);
-//        _dessinerVol(xSource, ySource, xDestination, yDestination);
-//      }
-//    }
     Line flight = new Line();
-      for (City destination in citiesReferential.cities[0].connections){
-        flight.x1 = _converter.getHorizontalCoordinate(citiesReferential.cities[0].longitude);
-        flight.y1 = _converter.getVerticalCoordinate(citiesReferential.cities[0].latitude);  
+    _context.beginPath();
+    for (City city in citiesReferential.cities) {
+      for (City destination in city.connections){
+        flight.x1 = _converter.getHorizontalCoordinate(city.longitude);
+        flight.y1= _converter.getVerticalCoordinate(city.latitude);  
         flight.x2 = _converter.getHorizontalCoordinate(destination.longitude);
         flight.y2 = _converter.getVerticalCoordinate(destination.latitude);
-        _drawFlight(flight, 1, "FF0000");
+        _drawFlight(flight, 1, "FFFFFF");
       }
-    
+    }
+    _context.closePath();
   }
   
   //vide le canevas

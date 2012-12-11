@@ -37,8 +37,8 @@ class HtmlPageManager {
   //Affiche les villes et les vols après avoir vider le canvas
   void displayCitiesAndFlights(){
     _drawingManager.clearCanvas();
-    _drawingManager.drawCities();
     _drawingManager.drawFlights();
+    _drawingManager.drawCities();
   }
 
   //rempli une liste déroulante avec les villes  

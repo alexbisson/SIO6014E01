@@ -47,8 +47,8 @@ void generateRandomConnections() {
   // Nombre de connexions sortantes qu'on va creer par ville
   // Il va avoir plus de connexions en bout de lignes puisque chaque
   // connexion est créée dans 2 villes
-  int minConnections = 2;
-  int maxConnections = 6;
+  int minConnections = 1;
+  int maxConnections = 3;
   Random rnd = new Random();
 
   for (City city in citiesReferential.cities) {
