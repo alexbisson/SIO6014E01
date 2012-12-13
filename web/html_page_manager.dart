@@ -8,7 +8,7 @@ class HtmlPageManager {
   void displayShortestPath(List<City> cities){
     assert(cities != null);
     if(cities.length != 0){
-      displayCitiesAndFlights();
+      displayCities();
       _drawingManager.drawPath(cities);
       String textToDisplay = "";
       for(int i=0;i<cities.length-1;i++){
@@ -38,6 +38,12 @@ class HtmlPageManager {
   void displayCitiesAndFlights(){
     _drawingManager.clearCanvas();
     _drawingManager.drawFlights();
+    _drawingManager.drawCities();
+  }
+  
+//Affiche les villes après avoir vider le canvas
+  void displayCities(){
+    _drawingManager.clearCanvas();
     _drawingManager.drawCities();
   }
 

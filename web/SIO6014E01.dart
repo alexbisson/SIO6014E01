@@ -17,6 +17,8 @@ HtmlPageManager htmlPageManager = new HtmlPageManager();
 
 void main() {
   query('#btnTestAStar').on.click.add(testAStar);
+  query('#btnDisplayPaths').on.click.add((event) => htmlPageManager.displayCitiesAndFlights());
+  
   generateRandomConnections();   
   htmlPageManager.displayCitiesAndFlights();
   htmlPageManager.fillDropDownLists();
