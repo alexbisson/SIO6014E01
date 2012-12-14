@@ -11,6 +11,8 @@ body {
 p {
   color: #333;
   text-align:justify;
+  line-height:120%;
+  
 }
 
 #popup-box {
@@ -28,18 +30,18 @@ p {
 
 #container {
   width : 1024px;
-  height: 400px;
+  height: auto;
   position: relative;
   border: 4px solid #ccc;
   background-color: #fff;
   border-radius: 15px 15px 15px 15px;
   margin-bottom: 20px;
+  margin-top:20px;
 }
 
 #text {
   font-size: 24pt;
   text-align: center;
-  margin-top: 140px;
 }
 
 #buttons{

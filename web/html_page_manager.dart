@@ -7,16 +7,24 @@ class HtmlPageManager {
   //Affiche le chemin le plus court sur le canvas
   void displayShortestPath(List<City> cities){
     assert(cities != null);
+    int distance = 0;
+    int distanceTotale = 0;
+    String distances = "";
+    String path = "Vols : ";
     if(cities.length != 0){
       displayCities();
       _drawingManager.drawPath(cities);
-      String textToDisplay = "";
       for(int i=0;i<cities.length-1;i++){
-        textToDisplay = textToDisplay.concat(cities[i].name).concat("->");
+        distance = cities[i].getDistanceTo(cities[i+1]).toInt();
+        distances = distances.concat(cities[i].name).concat("->").concat(cities[i+1].name).concat("= $distance km<br>");
+        path = path.concat(cities[i].name).concat("->");
+        distanceTotale = distanceTotale + distance;
       }
       //on ne veut pas de flêche pour le dernier
-      textToDisplay = textToDisplay.concat(cities[cities.length-1].name); 
-      displayAnswerText(textToDisplay);    
+      path = path.concat(cities[cities.length-1].name).concat("<br><br>Distances<br>");
+      path = path.concat(distances);
+      path = path.concat("Total = $distanceTotale km");
+      displayAnswerText(path);    
     }
     
   }
