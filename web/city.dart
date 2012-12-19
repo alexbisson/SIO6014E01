@@ -5,6 +5,8 @@ class City {
   String name;
   double latitude;
   double longitude;
+  int x;
+  int y;
   List<City> connections = new List<City>();
 
   City(String name, double latitude, double longitude) {
@@ -27,6 +29,18 @@ class City {
     return 6371 * acos(cos(_radians(90 - this.latitude)) *
         cos(_radians(90 - other.latitude)) + sin(_radians(90 - this.latitude)) *
         sin(_radians(90 - other.latitude)) * cos(_radians(this.longitude - other.longitude)));
+  }
+  
+  double getPixelDistanceTo(City other) {
+    return sqrt(pow((other.y - this.y), 2) + pow((other.x - this.x), 2));
+  }
+  
+  int getVerticalPixelDistanceTo(City other) {
+    return (other.y - this.y);
+  }
+  
+  int getHorizontalPixelDistanceTo(City other) {
+    return (other.x - this.x);
   }
 
   //Converti les degrés en radians

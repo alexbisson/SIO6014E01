@@ -2,15 +2,15 @@ library sio6014e01;
 
 import 'dart:html';
 import 'dart:math';
+import 'dart:isolate';
+
 part 'city.dart';
-part 'coordinate_converter.dart';
 part 'drawing_manager.dart';
 part 'a_star.dart';
 part 'cities_referential.dart';
 part 'html_page_manager.dart';
 part 'line.dart';
-
-
+part 'plane.dart';
 
 CitiesReferential citiesReferential = new CitiesReferential();
 HtmlPageManager htmlPageManager = new HtmlPageManager();
