@@ -9,6 +9,7 @@ class DrawingManager {
   DrawingManager(){
     _canvas = document.query('#canvasMap');
     _plane = document.query('#plane');
+    //_plane.style.imageOrientation = "90deg";
     int widthCanvas = _canvas.width;
     int heightCanvas = _canvas.height;
     _context = _canvas.getContext('2d');
@@ -80,7 +81,7 @@ class DrawingManager {
   }
   
   void drawPlane(int x, int y) {
-    _context.drawImage(_plane, x, y, 32, 32);
+    _context.drawImage(_plane, x - 16, y - 16, 32, 32);
   }
   
   //Dessine une ligne sur le canevas

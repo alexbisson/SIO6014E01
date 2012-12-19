@@ -9,15 +9,25 @@ class Plane {
   int increment;
   
   void move(List<City> path) {
-    City originCity = path[originCityIndex];
+
     City destinationCity = path[originCityIndex + 1];
     
-    double dist = originCity.getPixelDistanceTo(destinationCity);
-    int yDist = originCity.getVerticalPixelDistanceTo(destinationCity);
-    int xDist = originCity.getHorizontalPixelDistanceTo(destinationCity);
+    double dist = _getPixelDistanceTo(destinationCity);
+    int yDist = _getVerticalPixelDistanceTo(destinationCity);
+    int xDist = _getHorizontalPixelDistanceTo(destinationCity);
     
-    int yIncrement = (increment / dist * yDist).toInt();
-    int xIncrement = (increment / dist * xDist).toInt();
+    double angle = atan(yDist / xDist);
+    
+    int yIncrement = (sin(angle) * increment).toInt();
+    int xIncrement = (cos(angle) * increment).toInt();
+    
+    if ((yDist < 0 && yIncrement > 0) || (yDist > 0 && yIncrement < 0)) {
+      yIncrement = yIncrement * -1; 
+    }
+    
+    if ((xDist < 0 && xIncrement > 0) || (xDist > 0 && xIncrement < 0)) {
+      xIncrement = xIncrement * -1; 
+    }
     
     bool goingRight = xDist > 0;
     bool goingDown = yDist > 0;
@@ -49,5 +59,17 @@ class Plane {
       x = path[originCityIndex].x;
       y = path[originCityIndex].y;
     }
+  }
+  
+  double _getPixelDistanceTo(City other) {
+    return sqrt(pow((other.y - this.y), 2) + pow((other.x - this.x), 2));
+  }
+  
+  int _getVerticalPixelDistanceTo(City other) {
+    return (other.y - this.y);
+  }
+  
+  int _getHorizontalPixelDistanceTo(City other) {
+    return (other.x - this.x);
   }
 }

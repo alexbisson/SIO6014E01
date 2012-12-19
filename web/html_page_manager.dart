@@ -42,12 +42,13 @@ class HtmlPageManager {
       _shortestPath = cities;
       
       _plane = new Plane();
-      _plane.increment= 3;
+      _plane.increment= 12;
       _plane.originCityIndex = 0;
       _plane.x = _shortestPath[0].x;
       _plane.y = _shortestPath[0].y;
       
       _timer = new Timer.repeating(_interval, (t) => redraw());
+      //redraw();
     }
   }
   
